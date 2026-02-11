@@ -1,2 +1,4 @@
+#!/bin/bash
+
 echo "set -o vi" >> ~/.bashrc
-echo "TERM=xterm-256color" >> ~/.bashrc
+export TERM=xterm-256color

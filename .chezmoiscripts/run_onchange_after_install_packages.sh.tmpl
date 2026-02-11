@@ -2,5 +2,4 @@
 # packages hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
 {{ if ne .chezmoi.hostname "MacBookPro" }}
 $HOME/.local/bin/mise trust $HOME/.config/mise/config.toml && $HOME/.local/bin/mise install
-$HOME/.local/bin/mise trust /workspaces/$DEVPOD_WORKSPACE_ID/mise.toml && $HOME/.local/bin/mise install
 {{ end }}

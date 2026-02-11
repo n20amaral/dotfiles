@@ -2,8 +2,12 @@
 
 set -euo pipefail
 
+if command -v zsh >/dev/null; then
+  sudo chsh -s $(command -v zsh) $USER
+fi
+
 if ! command -v chezmoi >/dev/null; then
-     sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply n20amaral 
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply n20amaral 
 fi
 
 exit 0

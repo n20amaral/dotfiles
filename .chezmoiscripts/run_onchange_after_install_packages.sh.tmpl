@@ -1,5 +1,5 @@
 #!/bin/bash
 # packages hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
 {{ if ne .chezmoi.hostname "MacBookPro" }}
-$HOME/.local/bin/mise trust $HOME/.config/mise/config.toml && $$HOME/.local/bin/mise activate zsh && sed -i '1i eval "$(mise activate zsh)"' ~/.zshrc
+$HOME/.local/bin/mise trust $HOME/.config/mise/config.toml && $HOME/.local/bin/mise activate zsh && sed -i '1i eval "$(mise activate zsh)"' ~/.zshrc
 {{ end }}

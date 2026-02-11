@@ -1,4 +1,4 @@
 [tools]
 bat = "latest"
 oh-my-posh = "latest"
-pyenv = "latest"
+pipenv = "latest"

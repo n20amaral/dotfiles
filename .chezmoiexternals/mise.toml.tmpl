@@ -1,6 +1,14 @@
 {{ if ne .chezmoi.hostname "MacBookPro" }}
+
 [".local/bin/mise"]
 type = "file"
 executable = true
 url = "https://mise.jdx.dev/mise-latest-{{.chezmoi.os}}-{{.chezmoi.arch}}"
+
+[".config/nvim"]
+type = "archive"
+url = "https://github.com/LazyVim/starter/archive/refs/head/main.tar.gz"
+stripComponents = 1
+exclude = ["**/options.lua"]
+
 {{ end }}

@@ -1,4 +1,3 @@
 [tools]
 bat = "latest"
-oh-my-posh = "latest"
-pipenv = "latest"
+neovim = "latest"

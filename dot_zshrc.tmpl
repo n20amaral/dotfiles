@@ -9,7 +9,7 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(mise activate zsh)"
 
 {{- if eq .chezmoi.hostname "MacBookPro" }}
-eval "$(oh-my-posh init zsh --config '$HOME/.config/oh-my-posh/tiwahu.omp.json')"
+eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/tiwahu.omp.json)"
 {{- else }}
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit

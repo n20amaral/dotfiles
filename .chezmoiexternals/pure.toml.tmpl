@@ -1,0 +1,6 @@
+{{- if ne .chezmoi.hostname "MacBookPro" }}
+[".zsh/pure"]
+type = "archive"
+url = "https://github.com/sindresorhus/pure/archive/refs/heads/main.tar.gz"
+stripComponents = 1
+{{- end }}

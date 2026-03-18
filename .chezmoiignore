@@ -1,1 +1,14 @@
 setup
+{{- if ne .chezmoi.hostname "MacBookPro" }}
+.config/alacritty
+.config/alacritty/alacritty.toml
+.config/alacritty/themes
+.config/alacritty/themes/**
+.config/oh-my-posh
+.config/oh-my-posh/**
+.config/tmux
+.config/tmux/**
+.hammerspoon
+.hammerspoon/**
+{{- end }}
+

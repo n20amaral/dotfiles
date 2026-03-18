@@ -1,21 +1,54 @@
 #!/bin/bash
-
 set -euo pipefail
 
-if command -v zsh >/dev/null; then
-  sudo chsh -s $(command -v zsh) $USER
+# =============================================================================
+# Bootstrap script for DevPod and remote Linux machines
+# Mac setup is manual: brew install chezmoi mise && chezmoi init --apply n20amaral
+#
+# Usage: curl -fsLS https://raw.githubusercontent.com/n20amaral/dotfiles/main/setup | bash
+# =============================================================================
+
+# --- Detect package manager ---
+pkg_install() {
+  if command -v apt-get >/dev/null; then
+    sudo apt-get update -qq && sudo apt-get install -y -qq "$@"
+  elif command -v apk >/dev/null; then
+    apk add --no-cache "$@"
+  elif command -v dnf >/dev/null; then
+    sudo dnf install -y -q "$@"
+  else
+    echo "No supported package manager found (apt/apk/dnf)" >&2
+    exit 1
+  fi
+}
+
+# --- Install core dependencies first ---
+NEEDED=""
+command -v curl >/dev/null || NEEDED="$NEEDED curl"
+command -v git >/dev/null  || NEEDED="$NEEDED git"
+command -v zsh >/dev/null  || NEEDED="$NEEDED zsh"
+if [ -n "$NEEDED" ]; then
+  echo "Installing dependencies:$NEEDED"
+  pkg_install $NEEDED
 fi
 
-if [ ! -d "$HOME/.zsh" ]; then
-  mkdir -p "$HOME/.zsh"
+# --- Set zsh as default shell ---
+if [ "$SHELL" != "$(command -v zsh)" ]; then
+  echo "Setting zsh as default shell..."
+  if command -v sudo >/dev/null; then
+    sudo chsh -s "$(command -v zsh)" "$USER"
+  else
+    chsh -s "$(command -v zsh)" "$USER"
+  fi
 fi
 
-if [ ! -d  "$HOME/.zsh/pure" ]; then
-  git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
-fi
-
-if ! command -v chezmoi >/dev/null; then
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin init --apply n20amaral 
+# --- Install chezmoi and apply dotfiles ---
+# mise is handled by chezmoi externals, not this script
+if command -v chezmoi >/dev/null; then
+  chezmoi init --apply n20amaral
+else
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "$HOME/.local/bin" init --apply n20amaral
 fi
 
 exit 0
+

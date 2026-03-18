@@ -1,35 +1,22 @@
-{{ if eq .chezmoi.hostname "MacBookPro" }}
+{{- if eq .chezmoi.hostname "MacBookPro" }}
 fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
-# autoload -Uz compinit
-# compinit -D
+{{- end }}
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# Alias for VS Code Insiders
-alias code="code-insiders"
-
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
-export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-
-export PATH="$HOME/.dotnet/tools:$PATH"
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/n20amaral/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/nordtron.omp.json')"
-
-{{ end }}
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export PATH="$HOME/.local/bin:$PATH"
 
-alias k=kubectl
+eval "$(mise activate zsh)"
+
+{{- if eq .chezmoi.hostname "MacBookPro" }}
+eval "$(oh-my-posh init zsh --config '$HOME/.config/oh-my-posh/tiwahu.omp.json')"
+{{- else }}
+fpath+=($HOME/.zsh/pure)
+autoload -U promptinit; promptinit
+prompt pure
+{{- end }}
+
+alias v=nvim
+alias t=tmux
 set -o vi
 
-fpath+=($HOME/.zsh/pure)

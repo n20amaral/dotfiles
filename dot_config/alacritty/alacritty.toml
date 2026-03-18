@@ -1,0 +1,20 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/dracula.toml"
+]
+[keyboard]
+bindings = [
+{ key = "Return", mods = "Command", action = "ToggleSimpleFullscreen" }
+]
+[window]
+decorations = "none"
+opacity = 0.8
+[window.position] 
+x = 860 
+y = 0 
+[window.dimensions]
+columns = 191 
+lines = 74
+[font]
+normal = { family = "CaskaydiaCove Nerd Font Mono", style="Regular" }
+size = 16

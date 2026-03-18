@@ -4,4 +4,7 @@ neovim = "nightly"
 node = "lts"
 {{- if eq .chezmoi.hostname "MacBookPro" }}
 oh-my-posh = "latest"
+{{- else }}
+[settings]
+trusted_config_paths = ["/workspaces"]
 {{- end }}

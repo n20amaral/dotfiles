@@ -1,5 +1,15 @@
 #!/bin/bash
 # packages hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
 
-mise trust ~/.config/mise/config.toml
-mise install
+if [ -x /opt/homebrew/bin/mise ]; then
+  MISE=/opt/homebrew/bin/mise
+elif [ -x "$HOME/.local/bin/mise" ]; then
+  MISE="$HOME/.local/bin/mise"
+else
+  echo "mise not found, skipping tool installation"
+  exit 0
+fi
+
+eval "$($MISE activate bash)"
+$MISE trust ~/.config/mise/config.toml
+$MISE install

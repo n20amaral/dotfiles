@@ -3,6 +3,7 @@ vim.pack.add({
 	"https://github.com/nvim-lua/plenary.nvim", -- for telescope
 	"https://github.com/nvim-tree/nvim-web-devicons", -- for nvim-treesitter and lualine
 	"https://github.com/mason-org/mason.nvim", -- for mason-lspconfig
+	"https://github.com/nvim-mini/mini.icons", -- for which-key
 
 	-- colorschemes
 	"https://github.com/folke/tokyonight.nvim",

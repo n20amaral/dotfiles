@@ -6,8 +6,6 @@ setup
 .config/alacritty/themes/**
 .config/oh-my-posh
 .config/oh-my-posh/**
-.config/tmux
-.config/tmux/**
 .hammerspoon
 .hammerspoon/**
 {{- end }}

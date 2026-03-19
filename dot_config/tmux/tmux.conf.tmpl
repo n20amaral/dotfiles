@@ -1,0 +1,20 @@
+set -g status-position top
+set -g base-index 1
+set -g mouse on
+
+{{- if eq .chezmoi.hostname "MacBookPro" }}
+# Prefix: Ctrl+t
+unbind C-b
+set -g prefix C-a
+bind C-a send-prefix
+{{- end }}
+
+# Pane navigation
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Easy splits
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"

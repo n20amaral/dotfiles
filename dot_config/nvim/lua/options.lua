@@ -1,22 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocaleader = " "
 
-vim.g.clipboard = {
-	name = "OSC 52",
-	copy = {
-		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-	},
-	paste = {
-		["+"] = function()
-			return vim.fn.getreg('"', true, true)
-		end,
-		["*"] = function()
-			return vim.fn.getreg('"', true, true)
-		end,
-	},
-}
-
 vim.opt.clipboard = "unnamedplus"
 
 local opt = vim.opt

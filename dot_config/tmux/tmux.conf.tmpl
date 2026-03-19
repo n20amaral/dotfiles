@@ -1,8 +1,17 @@
-set -g status-position top
 set -g base-index 1
 set -g mouse on
 
 {{- if eq .chezmoi.hostname "MacBookPro" }}
+set -g status-position top
+set -g status-style "bg=#3a3a3a,fg=#b0b0b0"
+set -g status-left "#[bg=#4a4a4a,fg=#d0d0d0] #S #[default] "
+set -g status-right "#[bg=#4a4a4a,fg=#d0d0d0] %H:%M "
+set -g status-left-length 20
+set -g window-status-format " #I:#W "
+set -g window-status-current-format "#[bg=#555555,fg=#e0e0e0] #I:#W "
+set -g pane-border-style "fg=#444444"
+set -g pane-active-border-style "fg=#888888"
+
 # Prefix: Ctrl+t
 unbind C-b
 set -g prefix C-a

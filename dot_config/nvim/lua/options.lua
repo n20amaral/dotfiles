@@ -1,8 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocaleader = " "
 
-vim.opt.clipboard = "unnamedplus"
-
 local opt = vim.opt
 
 opt.number = true
@@ -29,3 +27,5 @@ opt.background = "dark"
 opt.signcolumn = "yes"
 
 opt.whichwrap = "bs<>"
+
+opt.mouse = ""

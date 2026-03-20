@@ -1,4 +1,5 @@
 {{- if eq .chezmoi.hostname "MacBookPro" }}
+
 fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 {{- end }}
 
@@ -11,6 +12,8 @@ eval "$(mise activate zsh)"
 {{- if eq .chezmoi.hostname "MacBookPro" }}
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/tiwahu.omp.json)"
 export DOCKER_HOST="unix://$(podman machine inspect --format '{{ "{{" }}.ConnectionInfo.PodmanSocket.Path{{ "}}" }}')"
+autoload -Uz compinit
+compinit
 {{- else }}
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit

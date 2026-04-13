@@ -11,7 +11,6 @@ eval "$(mise activate zsh)"
 
 {{- if eq .chezmoi.hostname "MacBookPro" }}
 eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/tiwahu.omp.json)"
-export DOCKER_HOST="unix://$(podman machine inspect --format '{{ "{{" }}.ConnectionInfo.PodmanSocket.Path{{ "}}" }}')"
 autoload -Uz compinit
 compinit
 {{- else }}
@@ -21,7 +20,12 @@ prompt pure
 {{- end }}
 
 alias v=nvim
+alias vi=nvim
+alias vim=nvim
 alias t=tmux
+alias tns="tmux new -s main"
+alias tat="tmux attach -t main"
 alias cat=bat
+alias cls=clear
 
 set -o vi

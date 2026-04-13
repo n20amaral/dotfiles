@@ -36,6 +36,9 @@ vim.pack.add({
 	"https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
 	"https://github.com/stevearc/conform.nvim",
 	"https://github.com/mfussenegger/nvim-lint",
+
+	-- ai
+	"https://github.com/olimorris/codecompanion.nvim",
 })
 
 require("options")
@@ -44,3 +47,4 @@ require("essentials")
 require("coding")
 require("ui")
 require("formatters")
+require("ai")
